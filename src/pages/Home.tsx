@@ -68,7 +68,7 @@ const Home: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen className="home-page">
+      <IonContent fullscreen className={"home-page"+(menu?" menu-open":"")}>
           <div className="home-content">
             <div className="home-header">
               <div className="my-info">
@@ -86,7 +86,7 @@ const Home: React.FC = () => {
                 I had the intention of showcasing some of my non-academic work, but honestly as of now I don't have the time for much else.
                 The odds that *most* most of the pages on in the menu get filled out is slim for the time being, but hopefully some of my photos get posted.
               </p>
-              <IonTitle style={{fontSize: '32px', marginTop: '40px'}}>Activity calendar <CalendarDaysIcon size={32} /></IonTitle>
+              <IonTitle>Activity calendar<CalendarDaysIcon size={32} /></IonTitle>
               <IonLabel>
                 Below is a GitHub-esque calendar tracking my commit activity (which looks pretty plain since I almost never push to main).
                 I also decided to add in my Strava activities to make it look like I actually do things every day.
@@ -98,7 +98,7 @@ const Home: React.FC = () => {
                     'rgba('+github_color+',0.1)':
                     'rgba('+strava_color+',0.1)'
                 }}>
-                  <IonTitle>What am I<br/>up to</IonTitle>
+                  <IonLabel className="title">What am I up to</IonLabel>
                   <IonAccordionGroup ref={calendarSelector}>
                     <IonAccordion value="commits">
                       <IonItem slot="header" className="activity-selector-header">
@@ -125,7 +125,7 @@ const Home: React.FC = () => {
                   />
                 </div>
               </div>
-              <IonTitle style={{fontSize: '32px', textAlign: 'right', marginTop: '40px'}}><FullscreenIcon size={32} /> Photography</IonTitle>
+              <IonTitle className="right"><FullscreenIcon size={32} />Photography</IonTitle>
               <IonLabel>
                 I almost never shoot anymore, but when I do it is with a $150 Canon kit I bought on sale at Best Buy in 2015.
                 Probably about 10% of my photos are worth looking at, and those will be posted here, grouped together by when and where they were taken.
@@ -166,7 +166,7 @@ const Home: React.FC = () => {
                 </>
                 }
               </div>
-              <IonTitle style={{fontSize: '32px', marginTop: '40px'}}>Research <TestTubeDiagonalIcon size={32} /></IonTitle>
+              <IonTitle>Research<TestTubeDiagonalIcon size={32} /></IonTitle>
               <IonLabel>
                 Copied from my resumé: I am a PhD candidate in Bioinformatics at UC Santa Cruz.
                 My research explores the use of extracellular RNAs and repetitive elements as predictive markers of early-stage cancer.
@@ -175,12 +175,30 @@ const Home: React.FC = () => {
               </IonLabel>
               <div className="publication-list">
                 <Swiper id="publication-swiper"
+                  centeredSlides={true}
                   spaceBetween={0}
                   slidesPerView={3}
-                  centeredSlides={true}
                   modules={[Navigation]}
                   navigation={true}
+                  loop={true}
                 >
+                  <SwiperSlide onClick={() => window.open('https://www.biorxiv.org/content/10.1101/2025.07.02.662774v1', '_blank')}>
+                    <IonLabel className="journ">bioRxiv, 2025</IonLabel>
+                    <IonLabel className="title">RNA liquid biopsy via nanopore sequencing for novel biomarker discovery and cancer early detection</IonLabel>
+                    <IonLabel className="author"><u>Hill, AD.</u> & Peddu, V. Maroli, SLV. Mattingly, C. Gardener, JMV. Miga KH. Fitzgerald, RC. Kim, DH.</IonLabel>
+                  </SwiperSlide>
+                  <SwiperSlide onClick={() => window.open('https://www.nature.com/articles/s41551-023-01081-7', '_blank')}>
+                    <IonLabel className="journ">Nature BME, 2023</IonLabel>
+                    <IonLabel className="title">Profiling of repetitive element RNAs in the blood plasma of patients with cancer</IonLabel>
+                    <IonLabel className="author">
+                      Reggiardo, RE. Maroli, SLV. Peddu, V. Davidson, AE. <u>Hill, AD.</u> LaMontagne, E. Al Aaraj, Y. Jain, M. Chan, SY. Kim, DH.
+                    </IonLabel>
+                  </SwiperSlide>
+                  <SwiperSlide onClick={() => window.open('https://www.mdpi.com/2073-4409/11/21/3412', '_blank')}>
+                    <IonLabel className="journ">Cells, 2022</IonLabel>
+                    <IonLabel className="title">Chromatin accessibility and transcriptional differences in human stem cell-derived early-stage retinal organoids</IonLabel>
+                    <IonLabel className="author">Jones, MK. Agarwal, D. Mazo, KW. Chopre, M. Jurlina, SL. Dash, N. Xu, Q. Ortega, AR. Chow, M. <u>Hill, AD.</u> Kambli, NK. Xu, G. Sasik, R. Birmingham, A. Fisch, KM. Weinreb, RN. Enke, RA. Skowronska-Krawczyk, D. Wahlin, KJ.</IonLabel>
+                  </SwiperSlide>
                   <SwiperSlide onClick={() => window.open('https://www.biorxiv.org/content/10.1101/2025.07.02.662774v1', '_blank')}>
                     <IonLabel className="journ">bioRxiv, 2025</IonLabel>
                     <IonLabel className="title">RNA liquid biopsy via nanopore sequencing for novel biomarker discovery and cancer early detection</IonLabel>
@@ -200,7 +218,7 @@ const Home: React.FC = () => {
                   </SwiperSlide>
                 </Swiper>
               </div>
-              <IonTitle style={{fontSize: '32px', marginTop: '40px', textAlign: 'right'}}><CableIcon size={32} /> Homelab</IonTitle>
+              <IonTitle className="right"><CableIcon size={32} />Homelab</IonTitle>
               <IonLabel>
                 I've been told that the following is 'not very interesting' but I will stick it up here anyway.
                 I have a small homelab setup (which loosely means that I had an old raspberry pi doing nothing)

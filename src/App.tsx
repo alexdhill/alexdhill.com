@@ -39,12 +39,15 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import './App.css';
 
-setupIonicReact();
+setupIonicReact({
+  rippleEffect: false,
+  mode: 'md'
+});
 
 const App: React.FC = () => {
 
   const [theme, setTheme] = useState<'light' | 'dark' | 'warm'>(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  const [menu, setMenu] = useState<boolean>(true);
+  const [menu, setMenu] = useState<boolean>(false);
   const [progress, setProgress] = useState<boolean | number>(false);
 
   const settings: SettingsType = {

@@ -16,7 +16,6 @@ ion-content.container {
     }
 
     .content-container {
-      min-width: 990px;
       position: relative;
       flex-grow: 1;
       overflow: hidden;

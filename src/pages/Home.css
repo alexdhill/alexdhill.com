@@ -1,5 +1,6 @@
 ion-content.home-page {
     --background: var(--ion-color-background);
+    min-width: 370px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,6 +60,15 @@ ion-content.home-page {
         div.home-body {
             margin-bottom: 160px;
 
+            ion-title {
+                font-size: 36px;
+                margin-top: 20px;
+            }
+
+            ion-title.right {
+                text-align: right;
+            }
+
             div.activity-container {
                 display: flex;
                 flex-direction: row;
@@ -78,7 +88,11 @@ ion-content.home-page {
                     border-radius: 12px;
                     margin-right: 20px;
 
-                    ion-title {
+                    ion-label.title {
+                        font-size: 32px;
+                        font-family: moonblossom, sans-serif;
+                        width: 100%;
+                        text-wrap: wrap;
                         padding: 0;
                         margin-bottom: 60px;
                     }
@@ -222,37 +236,42 @@ ion-content.home-page {
             }
 
             div.publication-list {
-                height: 500px;
+                position: relative;
                 display: flex;
+                height: 480px;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                margin: 0 auto;
 
                 div.swiper {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    margin: 0 auto;
                     margin-top: 20px;
-                    max-width: min-content;
+                    width: 750px;
+                    min-height: 480px;
                     overflow: visible;
 
                     .swiper-wrapper {
-                        width: fit-content;
-                        align-items: center;
-                        justify-content: center;
 
                         div.swiper-slide {
                             border: var(--ion-color-light) 1px solid;
                             background: var(--ion-color-background);
                             box-shadow: rgba(0,0,0,0.1) 0px 0px 8px 2px;
                             border-radius: 12px;
-                            max-width: 250px;
+                            width: 250px;
                             height: 400px;
                             padding: 10px;
-                            margin: 0 10px;
                             display: flex;
+                            margin-top: 40px;
                             flex-direction: column;
                             align-items: start;
                             justify-content: start;
                             filter: url('#handdrawn-subtle');
-                            opacity: 0.75;
+                            opacity: 0;
+                            transition: transform .3s ease, opacity .3s ease;
 
                             ion-label.journ {
                                 font-size: 14px;
@@ -272,7 +291,13 @@ ion-content.home-page {
                             }
                         }
 
+                        div.swiper-slide-prev,
+                        div.swiper-slide-next {
+                            opacity: 0.6;
+                        }
+
                         div.swiper-slide-active {
+                            transition: transform .3s ease, opacity .3s ease;
                             transform: scale(1.2);
                             filter: url('#handdrawn-animated');
                             opacity: 1;
@@ -323,4 +348,90 @@ ion-content.home-page {
 
 .gallery-toast::part(message) {
     filter: url('#handdrawn-animated') !important;
+}
+
+@media (max-width: 600px) {
+    ion-content.home-page {
+        --padding-top: 40px;
+        --padding-end: 15px;
+        --padding-start: 15px;
+        div.home-content {
+            div.home-header {
+                div.my-info {
+                    ion-title {
+                        font-size: 18px;
+                    }
+                }
+                div.site-info {
+                    ion-title {
+                        font-size: 18px;
+                    }
+                }
+            }
+            div.home-body {
+                ion-title {
+                    font-size: 18px;
+                }
+                svg {
+                    max-height: 22px;
+                }
+
+                div.activity-container {
+                    flex-direction: column;
+
+                    div.activity-selector {
+                        width: 100%;
+                        height: unset;
+                        margin-bottom: 20px;
+
+                        ion-label.title {
+                            font-size: 24px;
+                        }
+
+                        ion-accordion-group {
+                            top: 47px;
+                        }
+                    }
+
+                    div.home-calendar {
+                        width: 100%;
+                    }
+                }
+
+                div.home-image {
+                    aspect-ratio: 5/3;
+                    div.swiper {
+                        div.swiper-slide {
+                            ion-title {
+                                font-size: 32px;
+                                padding-left: 10px;
+                            }
+                        }
+                    }
+                }
+
+                div.publication-list {
+                    div.swiper {
+                        .swiper-wrapper {
+                            .swiper-slide {
+                                ion-label.journ {
+                                    font-size: 12px !important;
+                                }
+                                ion-label.title {
+                                    font-size: 18px !important;
+                                }
+                                ion-label.author {
+                                    font-size: 12px !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ion-content.home-page.menu-open {
+        --padding-top: 15px;
+    }
 }
