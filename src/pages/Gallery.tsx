@@ -19,7 +19,7 @@ const Gallery: React.FC = () => {
 
     return (
         <IonPage>
-            <IonContent fullscreen className="photos-page">
+            <IonContent fullscreen className="gallery-page">
                 <div className="photo-grid">
                     {photos.map((photo, index) => (
                         <div className="photo-container" key={index} style={{width: `${photo.width/12*100}%`}}>

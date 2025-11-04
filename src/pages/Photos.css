@@ -1,6 +1,7 @@
 ion-content.photos-page {
     --background: transparent;
     padding: 0;
+    min-width: 370px;
 
     div.swiper {
         width: 100%;
@@ -161,6 +162,33 @@ ion-content.photos-page {
             filter: url('#handdrawn-animated');
             z-index: 50;
             cursor: var(--cursor-point);
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    ion-content.photos-page {
+        div.swiper {
+            div.swiper-slide {
+                div.description {
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    ion-label {
+                        font-size: 12px;
+                    }
+
+                    div.left {
+                        ion-label.title {
+                            font-size: 16px;
+                        }
+
+                        ion-label.location {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
