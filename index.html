@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Ionic App</title>
+    <title>Alex D. Hill</title>
     
     <base href="/" />
     
@@ -17,13 +17,76 @@
     <link rel="manifest" href="/manifest.json" />
     
     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+
+    <!-- Add fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/jrd7nca.css">
     
     <!-- add to homescreen for ios -->
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Ionic App" />
+    <meta name="apple-mobile-web-app-title" content="Alex D. Hill" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   </head>
   <body>
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="handdrawn-subtle" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise"
+                          baseFrequency="0.07"
+                          numOctaves="2"
+                          seed="3"
+                          result="noise"/>
+          <feDisplacementMap in="SourceGraphic"
+                              in2="noise"
+                              scale="0.1"
+                              xChannelSelector="R"
+                              yChannelSelector="G"
+                              result="warp"/>
+          <feGaussianBlur in="warp"
+                          stdDeviation="0.15"
+                          out="blur" />
+          <feColorMatrix in="blur"
+                            type="matrix"
+                            values="1.5 0 0 0 0
+                                    0 1.5 0 0 0
+                                    0 0 1.5 0 0
+                                    0 0 0 2.5 -0.5"
+                            result="contrast"/>
+          <feComposite in="SourceGraphic" in2="contrast" operator="arithmetic"
+             k1="0" k2="0.8" k3="0.3" k4="0" />
+        </filter>
+
+        <filter id="handdrawn-animated" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise"
+                          baseFrequency="0.07"
+                          numOctaves="2"
+                          seed="3"
+                          result="noise">
+            <animate attributeName="seed"
+                    dur="1s"
+                    values="1;2;3;1"
+                    repeatCount="indefinite"/>
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic"
+                              in2="noise"
+                              scale="0.1"
+                              xChannelSelector="R"
+                              yChannelSelector="G"
+                              result="warp"/>
+          <feGaussianBlur in="warp"
+                          stdDeviation="0.15"
+                          out="blur" />
+          <feColorMatrix in="blur"
+                            type="matrix"
+                            values="1.5 0 0 0 0
+                                    0 1.5 0 0 0
+                                    0 0 1.5 0 0
+                                    0 0 0 2.5 -0.5"
+                            result="contrast"/>
+          <feComposite in="SourceGraphic" in2="contrast" operator="arithmetic"
+             k1="0" k2="0.8" k3="0.3" k4="0" />
+        </filter>
+      </defs>
+    </svg>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

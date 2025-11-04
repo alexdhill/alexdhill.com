@@ -1,0 +1,48 @@
+ion-content.container {
+  --background: var(--ion-color-light);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  .viewport-columns {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+
+    .menu-container {
+      min-width: 155px;
+    }
+
+    .content-container {
+      min-width: 990px;
+      position: relative;
+      flex-grow: 1;
+      overflow: hidden;
+      border-radius: 12px;
+
+      ion-button.menu-open {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        --background: rgba(var(--ion-color-light-rgb), 0.5);
+        backdrop-filter: blur(3px);
+        --padding-start: 0;
+        --padding-end: 0;
+        --padding-top: 0;
+        --padding-bottom: 0;
+        min-height: unset;
+        --color-focused: unset;
+        --color-hover: unset;
+        --color-activated: unset;
+        color: var(--ion-color-dark-tint);
+        --box-shadow: none;
+      }
+    }
+
+    .progress-container {
+      width: 00px;
+    }
+  }
+}

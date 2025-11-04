@@ -1,0 +1,20 @@
+{
+  "name": "fetch_strava",
+  "version": "1.0.0",
+  "description": "Pull strava workout data to calendar format",
+  "license": "ISC",
+  "author": "Alex D Hill",
+  "type": "module",
+  "main": "fetch_strava.ts",
+  "scripts": {
+    "test": "npx tsx fetch_strava.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "fs": "^0.0.1-security",
+    "libsodium-wrappers": "^0.7.15",
+    "octokit": "^5.0.3",
+    "strava-v3": "^2.2.1",
+    "tsx": "^4.19.4"
+  }
+}

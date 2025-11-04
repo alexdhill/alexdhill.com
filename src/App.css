@@ -1,0 +1,31 @@
+ion-app {
+    background: var(--ion-color-background);
+    font-weight: 500;
+
+    div.ion-page {
+        background: var(--ion-color-background);
+    }
+
+    svg {
+        filter: url('#handdrawn-subtle');
+    }
+
+    ion-title {
+        padding: 0;
+        font-family: moonblossom, sans-serif;
+        font-weight: 1000;
+
+        svg {
+            padding-top: 7px;
+            filter: url('#handdrawn-animated');
+        }
+    }
+
+    ion-button::part(native) {
+        cursor: var(--cursor-point);
+    }
+
+    ion-item::part(native) {
+        cursor: var(--cursor-point);
+    }
+}

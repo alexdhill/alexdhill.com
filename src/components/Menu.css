@@ -1,0 +1,106 @@
+ion-list.menu {
+    background: transparent;
+    height: 100%;
+    padding-right: 10px;
+    padding-top: 10px;
+
+    ion-list-header {
+        padding: 0;
+        margin-bottom: 10px;
+        padding-left: 12px;
+        padding-right: 12px;
+        min-height: unset;
+        font-size: 18px;
+        flex-direction: row;
+        align-items: flex-start;
+        border-radius: 22px;
+
+        div.menu-header-gap {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+
+            div.fun-text {
+                display: flex;
+                flex-direction: row;
+                padding-right: 5px;
+
+                span.jiggle {
+                    display: inline-block;
+                }
+            }
+
+            div.fun-text:hover span.jiggle {
+                animation: jiggle 1s ease-in-out infinite;
+                filter: url('#handdrawn-animated');
+
+                &:nth-child(even) {
+                    animation-delay: 0.5s;
+                }
+            }
+        }
+
+        ion-button {
+            min-height: unset;
+            --padding-start: 0;
+            --padding-end: 0;
+            --padding-top: 0;
+            --padding-bottom: 0;
+            --color-focused: unset;
+            --color-hover: unset;
+            --color-activated: unset;
+            color: var(--ion-color-dark-tint);
+            margin-right: 10px;
+        }
+
+        ion-button:hover svg {
+            filter: url('#handdrawn-animated');
+        }
+    }
+
+    ion-item.menu-button {
+        --background: transparent;
+        --background-hover: rgba(var(--ion-color-primary-rgb),1);
+        --color-hover: var(--ion-color-primary);
+        border-radius: 12px;
+        min-width: 175px;
+        
+        ion-label {
+            font-size: 18px;
+            font-family: 'ff-providence-sans-web-pro', sans-serif;
+        }
+
+        svg {
+            margin-right: 10px;
+            filter: url('#handdrawn-subtle');
+            margin-bottom: 5px;
+        }
+    }
+
+    ion-item.menu-button:hover {
+        ion-label {
+            filter: url('#handdrawn-animated');
+        }
+        svg {
+            filter: url('#handdrawn-animated');
+        }
+    }
+}
+
+@keyframes jiggle {
+    0% {
+        transform: rotate(-15deg);
+    }
+    49.999% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    99.999% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(-15deg);
+    }
+}

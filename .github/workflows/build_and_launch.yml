@@ -1,0 +1,68 @@
+name: Update, Build and Deploy Site
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 8 * * *'
+
+jobs:
+    update_build_deploy:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+          with:
+            persist-credentials: false
+
+        - name: Setup Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: '21'
+          
+        - name: Fetch Strava Data
+          run: |
+            mkdir -p public/data
+            cd .github/actions/fetch_strava
+            npm ci
+            npx tsx fetch_strava.ts
+          env:
+            GITHUB_REPOSITORY: '${{ github.repository }}'
+            GITHUB_TOKEN: '${{ secrets.GHPAT }}'
+            STRAVA_CLIENT_ID: '${{ secrets.STRAVA_CLIENT_ID }}'
+            STRAVA_CLIENT_SECRET: '${{ secrets.STRAVA_CLIENT_SECRET }}'
+            STRAVA_AUTH_TOKEN: '${{ secrets.STRAVA_AUTH_TOKEN }}'
+            OUT_FILE: '${{ github.workspace }}/public/data/activities.json'
+
+        - name: Fetch Github Data
+          run: |
+            cd .github/actions/fetch_github
+            npm ci
+            npx tsx fetch_github.ts
+          env:
+            GITHUB_REPOSITORY: '${{ github.repository }}'
+            GITHUB_TOKEN: '${{ secrets.GHPAT }}'
+            OUT_FILE: '${{ github.workspace }}/public/data/commits.json'
+
+        - name: Inject Firebase Config
+          env:
+            FIREBASE_CONFIG: '${{ secrets.FIREBASE_CONFIG }}'
+          run: |
+            echo "VITE_FIREBASE_CONFIG=${FIREBASE_CONFIG}" > .env
+
+        - name: Build Static
+          run: |
+            npm ci
+            npm i @rollup/rollup-linux-x64-gnu
+            npm run build --prod
+
+        - name: Deploy to Firebase Hosting
+          uses: FirebaseExtended/action-hosting-deploy@v0
+          env:
+            VITE_FIREBASE_CONFIG: '${{ secrets.FIREBASE_CONFIG }}'
+          with:
+            repoToken: '${{ secrets.GITHUB_TOKEN }}'
+            firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ALEXDHILLCOM }}'
+            projectId: alexdhillcom
+            channelId: live

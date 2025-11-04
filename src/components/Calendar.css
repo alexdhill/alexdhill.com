@@ -1,0 +1,99 @@
+div.activity-calendar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    overflow-x: scroll;
+
+    div.calendar-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        div.calendar-month {
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+            justify-content: space-between;
+
+            div.calendar-week {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: start;
+                margin: 1px;
+
+                div.calendar-day {
+                    margin: 2px;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+}
+
+.hover-popover {
+    pointer-events: none;
+}
+
+ion-popover::part(content) {
+  box-shadow: rgba(var(--ion-color-dark-rgb), 0.05) 0px 0px 15px 3px;
+  background: var(--ion-color-background);
+  border: var(--ion-color-dark);
+}
+
+ion-popover::part(arrow)::after {
+    background: var(--ion-color-background);
+}
+
+ion-popover::part(backdrop) {
+    display: none;
+}
+
+ion-popover {
+    --background: var(--ion-color-background);
+}
+
+div.popover-content {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    
+    .date_header {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        margin: auto 0;
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+
+        font-size: 16px;
+        font-family: moonblossom, sans-serif;
+        filter: url('#handdrawn-animated');
+    }
+
+    .act_type {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 25px;
+        margin-bottom: 5px;
+
+        font-size: 1em;
+        color: var(--ion-color-medium-tint);
+
+        svg {
+            margin-right: 10px;
+            filter: url('#handdrawn-animated');
+        }
+
+        p {
+            font-family: ff-providence-sans-web-pro, sans-serif;
+            filter: url('#handdrawn-animated');
+            margin: 0;
+        }
+    }
+}
