@@ -11,8 +11,8 @@ Handwritten text:
 */
 
 ion-app {
-  --ion-font-family: ff-providence-sans-web-pro, sans-serif;
-  --ion-text-color: var(--ion-color-dark);
+	--ion-font-family: ff-providence-sans-web-pro, sans-serif;
+	--ion-text-color: var(--ion-color-dark);
 
 	--ion-color-primary: #e37600;
 	--ion-color-primary-rgb: 227,118,0;

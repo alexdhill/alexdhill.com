@@ -1,5 +1,5 @@
 ion-app {
-    background: var(--ion-color-background);
+    background: var(--ion-color-light);
     font-weight: 500;
 
     div.ion-page {
