@@ -10,11 +10,13 @@
     "test": "npx tsx fetch_strava.ts"
   },
   "dependencies": {
-    "dotenv": "^16.5.0",
     "fs": "^0.0.1-security",
     "libsodium-wrappers": "^0.7.15",
     "octokit": "^5.0.3",
     "strava-v3": "^2.2.1",
     "tsx": "^4.19.4"
+  },
+  "devDependencies": {
+    "dotenv": "^17.2.3"
   }
 }

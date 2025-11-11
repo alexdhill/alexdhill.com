@@ -3,6 +3,9 @@ import { Octokit } from 'octokit';
 import strava, { DetailedActivityResponse } from 'strava-v3';
 import sodium from 'libsodium-wrappers';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 // Pull my auth token from GH secrets (or .env)
 const load_auth_token = () => {
     console.log("Loading strava auth token");

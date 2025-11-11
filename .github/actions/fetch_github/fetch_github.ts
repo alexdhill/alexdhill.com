@@ -1,6 +1,9 @@
 import { writeFileSync } from 'fs';
 import { Octokit } from 'octokit';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 interface CommitResult {
     user: {
         contributionsCollection: {
